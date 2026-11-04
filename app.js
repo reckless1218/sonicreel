@@ -216,19 +216,22 @@
     trackAdConversion(formType);
 
     const endpoint = String(CFG.formEndpointUrl || "").trim();
-    if (endpoint && /^https?:\/\//i.test(endpoint)) {
-      try {
-        await fetch(endpoint, {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(entry)
-        });
-      } catch (err) {
-        console.warn("Remote form endpoint unreachable; lead stored locally.", err);
-      }
+    if (!endpoint || !/^https?:\/\//i.test(endpoint)) return true;
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(Object.assign({ form: formType, _subject: "SonicReel: " + formType }, entry))
+      });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return true;
+    } catch (err) {
+      console.warn("Form submission failed.", err);
+      showToast("Sorry, we couldn't send that right now. Please try again or email us.");
+      return false;
     }
   }
 
@@ -1356,7 +1359,7 @@
         const submitBtn = form.querySelector('[type="submit"]');
         if (submitBtn) submitBtn.disabled = true;
 
-        await deliverLead("hire_creator", {
+        if (!(await deliverLead("hire_creator", {
           creatorId: c.id,
           creatorName: c.name,
           clientName: String(fd.get("name")).trim(),
@@ -1365,7 +1368,7 @@
           timeline: fd.get("timeline"),
           bundleRequested: fd.get("addBundle") === "yes",
           details: String(fd.get("details")).trim()
-        });
+        }))) { if (submitBtn) submitBtn.disabled = false; return; }
         closeModal();
         showToast(
           "Quote request sent to " +
@@ -1461,10 +1464,10 @@
         });
         safeStore.set("sonicreel_custom_briefs_v1", state.customBriefs.slice(0, 20));
 
-        await deliverLead("post_project_brief", {
+        if (!(await deliverLead("post_project_brief", {
           ...newBrief,
           email: String(fd.get("email")).trim()
-        });
+        }))) { if (submitBtn) submitBtn.disabled = false; return; }
 
         renderBriefs();
         closeModal();
@@ -1548,7 +1551,7 @@
         state.sentProposals.add(b.id);
         safeStore.set("sonicreel_sent_proposals_v1", [...state.sentProposals]);
 
-        await deliverLead("creator_proposal", {
+        if (!(await deliverLead("creator_proposal", {
           briefId: b.id,
           briefTitle: b.title,
           creatorName: String(fd.get("creatorName")).trim(),
@@ -1557,7 +1560,7 @@
           quote: String(fd.get("quote")).trim(),
           portfolio: String(fd.get("portfolio")).trim(),
           message: String(fd.get("message")).trim()
-        });
+        }))) { if (submitBtn) submitBtn.disabled = false; return; }
         renderBriefs();
         closeModal();
         showToast("Proposal sent to " + b.clientName + "! Card status updated.");
@@ -1653,7 +1656,7 @@
         const submitBtn = form.querySelector('[type="submit"]');
         if (submitBtn) submitBtn.disabled = true;
 
-        await deliverLead("creator_application", {
+        if (!(await deliverLead("creator_application", {
           name: String(fd.get("name")).trim(),
           email: String(fd.get("email")).trim(),
           craft: fd.get("craft"),
@@ -1661,7 +1664,7 @@
           billingCycle: state.proBilling,
           wantsToTeach: fd.get("wantsToTeach") === "yes",
           portfolio: String(fd.get("portfolio")).trim()
-        });
+        }))) { if (submitBtn) submitBtn.disabled = false; return; }
         closeModal();
         showToast(
           "Welcome aboard, " +
@@ -1754,14 +1757,14 @@
         const submitBtn = form.querySelector('[type="submit"]');
         if (submitBtn) submitBtn.disabled = true;
 
-        await deliverLead("class_enrollment", {
+        if (!(await deliverLead("class_enrollment", {
           classId: cl.id,
           classTitle: cl.title,
           price: cl.price,
           mentor: fd.get("mentor") || cl.instructor,
           studentName: String(fd.get("name")).trim(),
           studentEmail: String(fd.get("email")).trim()
-        });
+        }))) { if (submitBtn) submitBtn.disabled = false; return; }
         closeModal();
         showToast(
           "Reserved “" +
@@ -1816,11 +1819,11 @@
         const submitBtn = form.querySelector('[type="submit"]');
         if (submitBtn) submitBtn.disabled = true;
 
-        await deliverLead("all_access_pass", {
+        if (!(await deliverLead("all_access_pass", {
           price: passPrice,
           studentName: String(fd.get("name")).trim(),
           studentEmail: String(fd.get("email")).trim()
-        });
+        }))) { if (submitBtn) submitBtn.disabled = false; return; }
         closeModal();
         showToast(
           "All-Access Studio Pass reserved! Check " +
@@ -1971,12 +1974,12 @@
         const submitBtn = form.querySelector('[type="submit"]');
         if (submitBtn) submitBtn.disabled = true;
 
-        await deliverLead("sponsor_ad_booking", {
+        if (!(await deliverLead("sponsor_ad_booking", {
           company: String(fd.get("company")).trim(),
           email: String(fd.get("email")).trim(),
           package: fd.get("package"),
           landingUrl: String(fd.get("landingUrl")).trim()
-        });
+        }))) { if (submitBtn) submitBtn.disabled = false; return; }
         closeModal();
         showToast(
           "Sponsor slot inquiry received for " +
@@ -2243,7 +2246,7 @@
         if (!email) return;
         const submitBtn = newsForm.querySelector('[type="submit"]');
         if (submitBtn) submitBtn.disabled = true;
-        await deliverLead("newsletter_signup", { email });
+        if (!(await deliverLead("newsletter_signup", { email }))) { if (submitBtn) submitBtn.disabled = false; return; }
         if (submitBtn) submitBtn.disabled = false;
         if (input) input.value = "";
         showToast("Subscribed! Weekly paid briefs & free studio LUTs/samples headed to " + email + ".");

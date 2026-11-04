@@ -19,7 +19,7 @@ window.SITE_CONFIG = {
   // Paste a free Formspree endpoint like "https://formspree.io/f/xyzwabcd"
   // to receive every Hire Request, Creator Signup, Class Booking, and Ad Inquiry
   // straight to your inbox (including UTM ad campaign attribution!).
-  formEndpointUrl: "",
+  formEndpointUrl: "https://formspree.io/f/mbggwzor",
 
   // 3. ADVERTISING & MONETIZATION ENGINE
   ads: {
