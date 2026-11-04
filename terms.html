@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms of Service — SonicReel</title>
+  <meta name="description" content="Marketplace, Commercial Licensing, Creator Pro, and Studio Academy Terms of Service for SonicReel.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-mark" aria-hidden="true">▶</span>
+        <span><span data-brand-name>SonicReel</span><span class="brand-name-accent">.</span></span>
+      </a>
+      <a href="index.html" class="btn btn-secondary btn-sm">← Back to Marketplace</a>
+    </div>
+  </header>
+
+  <main class="legal-page-wrap">
+    <span class="eyebrow-pill">Marketplace &amp; Academy Agreement</span>
+    <h1>Terms of Service</h1>
+    <p><em>Effective Date: November 4, 2026</em></p>
+
+    <h2>1. Platform Overview</h2>
+    <p><span data-brand-name>SonicReel</span> connects independent music producers, audio engineers, filmmakers, video editors, and instructors (“Creators”) with businesses, brands, and individuals seeking custom creative work or studio education (“Clients” and “Students”).</p>
+
+    <h2>2. Original Work &amp; Commercial Usage Rights</h2>
+    <ul>
+      <li>Creators warrant that all music, stems, footage, edits, and sound design delivered through <span data-brand-name>SonicReel</span> are 100% original or properly cleared for the agreed scope.</li>
+      <li>Upon final milestone payment release, Clients receive the commercial sync/usage rights specified in the booking agreement (including paid social media ads, YouTube, podcasts, and web campaigns), while Creators retain underlying portfolio display rights unless an NDA/buyout is selected.</li>
+    </ul>
+
+    <h2>3. Escrow Bookings, Revisions &amp; Fees</h2>
+    <p>Project milestones are agreed upfront before production begins. Free Starter creators pay a standard platform service fee upon completed payouts, while active Creator Pro and Studio Agency subscribers retain 100% of their project earnings (less standard card processing fees).</p>
+
+    <h2>4. Studio Classes &amp; 1-on-1 Coaching</h2>
+    <p>On-demand masterclasses include a 30-day satisfaction guarantee. Live 1-on-1 coaching sessions may be rescheduled free of charge with at least 24 hours' notice.</p>
+
+    <h2>5. Sponsor &amp; Advertising Standards</h2>
+    <p>All sponsored placements are clearly labeled as advertisements or partner spotlights. We reserve the right to reject deceptive, unsafe, or low-quality advertisements.</p>
+
+    <h2>6. Contact</h2>
+    <p>Questions about these Terms? Contact us at <a href="mailto:hello@sonicreel.studio" data-contact-email style="color:var(--accent-hover);text-decoration:underline;">hello@sonicreel.studio</a>.</p>
+  </main>
+
+  <script src="config.js"></script>
+  <script>
+    (function () {
+      var cfg = window.SITE_CONFIG || {};
+      var brand = cfg.brandName || "SonicReel";
+      document.title = "Terms of Service — " + brand;
+      document.querySelectorAll("[data-brand-name]").forEach(function (el) {
+        el.textContent = brand;
+      });
+      document.querySelectorAll("[data-contact-email]").forEach(function (el) {
+        var em = cfg.contactEmail || "hello@sonicreel.studio";
+        el.textContent = em;
+        if (el.tagName === "A") el.setAttribute("href", "mailto:" + em);
+      });
+    })();
+  </script>
+</body>
+</html>

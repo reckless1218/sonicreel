@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy &amp; Cookie Policy — SonicReel</title>
+  <meta name="description" content="Privacy Policy, Cookie Disclosures, and Google AdSense Advertising Choices for SonicReel.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-mark" aria-hidden="true">▶</span>
+        <span><span data-brand-name>SonicReel</span><span class="brand-name-accent">.</span></span>
+      </a>
+      <a href="index.html" class="btn btn-secondary btn-sm">← Back to Marketplace</a>
+    </div>
+  </header>
+
+  <main class="legal-page-wrap">
+    <span class="eyebrow-pill">Legal &amp; Ad Transparency</span>
+    <h1>Privacy &amp; Cookie Policy</h1>
+    <p><em>Effective Date: November 4, 2026</em></p>
+
+    <h2>1. Information We Collect</h2>
+    <p>When you submit a project brief, request a creator quote, apply as a creator, enroll in a studio class, or book a sponsorship on <span data-brand-name>SonicReel</span>, we collect the contact details and project notes you voluntarily provide (such as your name, email address, portfolio link, and project budget) solely to fulfill your request.</p>
+
+    <h2>2. Advertising, Cookies &amp; Google AdSense Disclosure</h2>
+    <p>To keep project posting free for clients and starter profiles free for independent creators, <span data-brand-name>SonicReel</span> displays clearly labeled partner sponsorships and may serve third-party advertisements through <strong>Google AdSense</strong> and similar advertising networks.</p>
+    <ul>
+      <li>Third-party vendors, including Google, use cookies (such as the DoubleClick DART cookie) to serve ads based on a user's prior visits to this website or other websites on the internet.</li>
+      <li>Google's use of advertising cookies enables it and its partners to serve ads to our visitors based on their visit to our site and/or other sites on the Internet.</li>
+      <li>Users may opt out of personalized advertising at any time by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent-hover);text-decoration:underline;">Google Ads Settings</a> or <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer" style="color:var(--accent-hover);text-decoration:underline;">www.aboutads.info/choices</a>.</li>
+    </ul>
+
+    <h2>3. Local Browser Storage</h2>
+    <p>We use standard browser storage (<code>localStorage</code>) to remember custom project briefs and preferences on your device. You can clear your browser storage at any time through your browser settings.</p>
+
+    <h2>4. Your Privacy Rights (CCPA &amp; GDPR)</h2>
+    <p>You may request access to, correction of, or deletion of any personal contact information you have submitted to us by emailing <a href="mailto:hello@sonicreel.studio" data-contact-email style="color:var(--accent-hover);text-decoration:underline;">hello@sonicreel.studio</a>. We never sell personal email lists to data brokers.</p>
+
+    <h2>5. Contact Us</h2>
+    <p>For privacy inquiries, ad partnership questions, or data removal requests, email <a href="mailto:hello@sonicreel.studio" data-contact-email style="color:var(--accent-hover);text-decoration:underline;">hello@sonicreel.studio</a>.</p>
+  </main>
+
+  <script src="config.js"></script>
+  <script>
+    (function () {
+      var cfg = window.SITE_CONFIG || {};
+      var brand = cfg.brandName || "SonicReel";
+      document.title = "Privacy & Cookie Policy — " + brand;
+      document.querySelectorAll("[data-brand-name]").forEach(function (el) {
+        el.textContent = brand;
+      });
+      document.querySelectorAll("[data-contact-email]").forEach(function (el) {
+        var em = cfg.contactEmail || "hello@sonicreel.studio";
+        el.textContent = em;
+        if (el.tagName === "A") el.setAttribute("href", "mailto:" + em);
+      });
+    })();
+  </script>
+</body>
+</html>

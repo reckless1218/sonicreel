@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://reckless1218.github.io/sonicreel/sitemap.xml
