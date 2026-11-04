@@ -2,7 +2,7 @@
  * ============================================================================
  * SONICREEL — MARKETPLACE CATALOG DATA (data.js)
  * ============================================================================
- * 9 verified creators (100% unique matched portraits), 6 studio classes &
+ * 9 example creators (100% unique matched portraits), 6 studio classes &
  * coaching offers, open client briefs, testimonials, and sponsor campaigns.
  * ============================================================================
  */
@@ -16,11 +16,9 @@ window.SONICREEL_DATA = {
       useCases: ["business", "youtube", "custom"],
       location: "Los Angeles, CA",
       featured: true,
-      verified: true,
       startingPrice: 240,
       turnaround: "3–5 days",
       avatar: "assets/images/creator-music-1.jpg",
-      badge: "Top 1% Composer",
       bio: "Former trailer-house composer & vocalist crafting emotional piano, strings, and modern hybrid percussion for brand commercials, indie films, and product launches.",
       deliverables: ["24-bit WAV + Stems", "100% Commercial Sync Rights", "2 Free Revisions"],
       mediaType: "audio",
@@ -32,23 +30,22 @@ window.SONICREEL_DATA = {
     {
       id: "marcus-vance",
       name: "Marcus Vance",
-      role: "Commercial Film Director & ARRI Cinema DP",
+      role: "Commercial Film Director & Cinema DP",
       category: "video",
       useCases: ["business", "events", "youtube"],
       location: "Austin, TX",
       featured: true,
-      verified: true,
       startingPrice: 480,
       turnaround: "5–7 days",
       avatar: "assets/images/creator-video-1.jpg",
       badge: "Featured Director",
-      bio: "Directing high-converting product commercials, founder brand stories, and launch films on ARRI Alexa Mini LF. Ship your product to our Austin stage or book on-location.",
-      deliverables: ["4K 16:9 + 9:16 Vertical Cuts", "Pro Film Grade", "Cleared Soundbed"],
+      bio: "Directing high-converting product commercials, founder brand stories, and launch films on cinema cameras. Ship your product to our Austin stage or book on-location.",
+      deliverables: ["4K 16:9 + 9:16 Vertical Cuts", "Pro Film Grade", "Original Soundbed"],
       mediaType: "video",
       sampleTitle: "Brand Launch & Hardware Commercial Reel (4K)",
       sampleDuration: "0:45",
       videoPreset: "commercial",
-      tags: ["Product Ads", "ARRI Cinema", "Ship-Your-Product", "TikTok/Reels Cuts"]
+      tags: ["Product Ads", "Cinema", "Ship-Your-Product", "TikTok/Reels Cuts"]
     },
     {
       id: "elena-rostova",
@@ -58,7 +55,6 @@ window.SONICREEL_DATA = {
       useCases: ["business", "youtube"],
       location: "New York, NY",
       featured: true,
-      verified: true,
       startingPrice: 165,
       turnaround: "48 hours",
       avatar: "assets/images/creator-video-2.jpg",
@@ -79,13 +75,12 @@ window.SONICREEL_DATA = {
       useCases: ["business", "youtube", "custom"],
       location: "Atlanta, GA",
       featured: false,
-      verified: true,
       startingPrice: 150,
       turnaround: "2–3 days",
       avatar: "assets/images/creator-devon-brooks.jpg",
       badge: "Sync Ready",
       bio: "Hard-hitting MPC drums, custom 808s, and infectious synth hooks built for sportswear campaigns, fitness brands, gaming creators, and recording artists.",
-      deliverables: ["Untagged Master + Trackouts", "Cleared 100% Original", "Custom BPM/Drop Timing"],
+      deliverables: ["Untagged Master + Trackouts", "Original (creator-warranted)", "Custom BPM/Drop Timing"],
       mediaType: "audio",
       sampleTitle: "Neon Stadium (Sports & Streetwear Knock)",
       sampleDuration: "0:28",
@@ -100,7 +95,6 @@ window.SONICREEL_DATA = {
       useCases: ["events", "business", "youtube"],
       location: "Miami, FL",
       featured: false,
-      verified: true,
       startingPrice: 320,
       turnaround: "4–6 days",
       avatar: "assets/images/creator-nadia-kouri.jpg",
@@ -121,7 +115,6 @@ window.SONICREEL_DATA = {
       useCases: ["business", "custom"],
       location: "Seattle, WA",
       featured: false,
-      verified: true,
       startingPrice: 390,
       turnaround: "5–8 days",
       avatar: "assets/images/creator-sora-takahashi.jpg",
@@ -142,13 +135,12 @@ window.SONICREEL_DATA = {
       useCases: ["business", "events", "custom"],
       location: "Nashville, TN",
       featured: false,
-      verified: true,
       startingPrice: 180,
       turnaround: "3–4 days",
       avatar: "assets/images/creator-music-2.jpg",
       badge: "Sonic Branding Pro",
       bio: "Memorable indie guitar & warm studio instrumentals, custom brand jingles, podcast intro themes, and bespoke acoustic celebration songs.",
-      deliverables: ["Full Track + 15s/30s Ad Cutdowns", "Broadcast & Podcast Cleared", "2 Revisions"],
+      deliverables: ["Full Track + 15s/30s Ad Cutdowns", "License set per booking", "2 Revisions"],
       mediaType: "audio",
       sampleTitle: "Morning Porch (Warm Indie Brand & Podcast Theme)",
       sampleDuration: "0:30",
@@ -163,11 +155,10 @@ window.SONICREEL_DATA = {
       useCases: ["business", "youtube", "custom"],
       location: "Chicago, IL",
       featured: false,
-      verified: true,
       startingPrice: 120,
       turnaround: "48 hours",
       avatar: "assets/images/creator-sound-3.jpg",
-      badge: "Broadcast & Dolby Spec",
+      badge: "Dolby Spec",
       bio: "Make your song, podcast, or video commercial translate powerfully on phones and studio monitors. Dialogue noise rescue, foley SFX for video ads, and analog mastering.",
       deliverables: ["Spotify/YouTube/TV Loudness Spec", "Dialogue Cleanup + SFX", "Instrumental Mix"],
       mediaType: "audio",
@@ -184,7 +175,6 @@ window.SONICREEL_DATA = {
       useCases: ["business", "custom"],
       location: "Chicago, IL",
       featured: false,
-      verified: true,
       startingPrice: 420,
       turnaround: "4–6 days",
       avatar: "assets/images/class-filmmaking.jpg",
@@ -219,7 +209,7 @@ window.SONICREEL_DATA = {
         "Lifetime on-demand HD access + Elena's 12 Custom Film LUTs & 85 SFX",
         "Works with FREE DaVinci Resolve, Premiere Pro, or CapCut Desktop",
         "Real Brand Ad Project Files to follow along click-by-click",
-        "30-day unconditional money-back guarantee"
+        "30-day money-back guarantee on on-demand classes"
       ],
       syllabus: [
         "Lesson 1–3: Pacing Psychology — Why Viewers Swipe in 1.8 Seconds",
@@ -247,7 +237,7 @@ window.SONICREEL_DATA = {
         "Includes Devon's 200+ Royalty-Free Drum, 808 & Melody Loop Starter Kit",
         "Step-by-step walkthroughs in FL Studio, Ableton Live & Logic Pro",
         "How to export stems and land your first $150–$300 client gig on SonicReel",
-        "30-day unconditional money-back guarantee"
+        "30-day money-back guarantee on on-demand classes"
       ],
       syllabus: [
         "Module 1: Drum Bounce Secrets (Kick, Snare, Hat Rolls & Swing)",
@@ -275,7 +265,7 @@ window.SONICREEL_DATA = {
         "14 step-by-step HD video modules + overhead lighting diagrams",
         "Downloadable Client Pitch Deck, Rate Sheet & Shot List templates",
         "RAW practice footage pack to build your first demo reel",
-        "30-day unconditional money-back guarantee"
+        "30-day money-back guarantee on on-demand classes"
       ],
       syllabus: [
         "Module 1: Why $800 Lighting Beats an $8,000 Camera Body",
@@ -304,7 +294,7 @@ window.SONICREEL_DATA = {
         "Multi-track WAV stems for 3 full songs (Pop, Hip-Hop, Indie)",
         "Works using 100% built-in stock plugins in Logic, Ableton, FL, Reaper & Pro Tools",
         "Vocal Chain Cheat Sheet & Frequency Carving Reference Guide",
-        "30-day unconditional money-back guarantee"
+        "30-day money-back guarantee on on-demand classes"
       ],
       syllabus: [
         "Part 1: Gain Staging, Room Acoustics Hacks & Reference Tracks",
@@ -333,7 +323,7 @@ window.SONICREEL_DATA = {
         "Next Cohort: Tuesdays at 7:00 PM EST starting Nov 17 (all sessions recorded)",
         "Direct live feedback from Amara on 2 of your original tracks",
         "Sync Metadata Spreadsheet & One-Stop Split-Sheet Contract templates",
-        "Certificate + Verified Sync-Ready Badge on your SonicReel profile"
+        "Certificate + Sync-Ready Badge on your SonicReel profile"
       ],
       syllabus: [
         "Week 1: The 3-Act Commercial Track Structure Video Editors Crave",
@@ -385,8 +375,8 @@ window.SONICREEL_DATA = {
     {
       id: "brief-101",
       title: "30-Sec Product Launch Video + Custom Upbeat Track for Cold-Brew Coffee Brand",
-      clientName: "Roast & Ritual Co.",
-      clientType: "Small Business • ✓ Verified Payment",
+      clientName: "Example: Local Coffee Roaster",
+      clientType: "Small Business • Example brief",
       category: "Video + Music Bundle",
       filterKey: "bundle",
       budget: "$650 – $900",
@@ -398,8 +388,8 @@ window.SONICREEL_DATA = {
     {
       id: "brief-102",
       title: "Custom 15-Second Podcast Intro Jingle + Voiceover Mastering",
-      clientName: "Founders Unfiltered Podcast",
-      clientType: "Media Brand • ✓ Verified Payment",
+      clientName: "Example: Startup Podcast",
+      clientType: "Media Brand • Example brief",
       category: "Music & Audio",
       filterKey: "music",
       budget: "$200 – $320",
@@ -411,21 +401,21 @@ window.SONICREEL_DATA = {
     {
       id: "brief-103",
       title: "Edit Raw 4K Wedding & Reception Footage into a 5-Min Cinematic Highlight Film",
-      clientName: "David & Priya M.",
-      clientType: "Individual Client • ✓ Verified Escrow",
+      clientName: "Example: Wedding Couple",
+      clientType: "Individual Client • Example brief",
       category: "Video & Editing",
       filterKey: "video",
       budget: "$400 – $550",
       deadline: "Needed in 2 weeks",
       postedAgo: "Yesterday",
       proposalsCount: 5,
-      description: "We have ~90GB of dual-camera Sony 4K clips + clean lapel vows audio from our outdoor wedding. Looking for a warm, emotional highlight edit + cleared acoustic soundtrack."
+      description: "We have ~90GB of dual-camera Sony 4K clips + clean lapel vows audio from our outdoor wedding. Looking for a warm, emotional highlight edit + licensed acoustic soundtrack."
     },
     {
       id: "brief-104",
       title: "4 Loopable Synthwave / Orchestral Boss Themes for Indie Steam Game Trailer",
-      clientName: "Starforge Pixel Studio",
-      clientType: "Indie Game Studio • ✓ Verified Payment",
+      clientName: "Example: Indie Game Studio",
+      clientType: "Indie Game Studio • Example brief",
       category: "Music & Audio",
       filterKey: "music",
       budget: "$800 – $1,200",
@@ -438,47 +428,22 @@ window.SONICREEL_DATA = {
 
   sponsors: {
     leaderboard: {
-      id: "aurasound",
-      sponsorName: "AuraSound Studio",
-      headline: "Analog-Modeled Vocal & Mastering Plugins — Try the Pro Suite Free for 14 Days",
-      subtext: "Used by top SonicReel producers & film mixers. Instant VST3 / AU / AAX download for Mac & Windows.",
-      promoCode: "SONIC20",
-      perkDetail: "20% off any AuraSound plugin bundle + 14-day unrestricted studio trial.",
-      partnerUrl: "https://reckless1218.github.io/sonicreel/?partner=aurasound",
-      ctaText: "Claim 20% Partner Perk",
-      tag: "SPONSORED STUDIO PARTNER"
+      id: "house-leaderboard",
+      sponsorName: "Your Brand Here",
+      headline: "Advertise here",
+      subtext: "Reach music producers, filmmakers & growing brands. Sponsor slots are open.",
+      ctaText: "Advertise Here",
+      tag: "AD SLOT AVAILABLE"
     },
     inFeed: {
-      id: "lensvault",
-      sponsorName: "LensVault Rentals",
-      headline: "Shoot Cinema-Grade Commercials Without Buying $15k Camera Bodies",
-      subtext: "Rent ARRI, RED, Sony FX6, anamorphic primes & Aputure lighting shipped insured to your door nationwide.",
-      promoCode: "REEL50",
-      perkDetail: "$50 off your first weekend camera or lighting kit rental + free return shipping.",
-      partnerUrl: "https://reckless1218.github.io/sonicreel/?partner=lensvault",
-      ctaText: "Get $50 Creator Credit",
-      tag: "FEATURED GEAR SPONSOR"
+      id: "house-infeed",
+      sponsorName: "Your Brand Here",
+      headline: "Advertise here",
+      subtext: "Put your gear, plugin, or service in front of SonicReel creators and clients.",
+      ctaText: "Advertise Here",
+      tag: "AD SLOT AVAILABLE"
     }
   },
 
-  testimonials: [
-    {
-      quote: "We shipped two bottles of our hot sauce to Marcus and paired Amara for a custom 30-second score. Our Instagram ROAS jumped 2.8x in week one—for a tenth of what an ad agency quoted us.",
-      author: "Hannah Alvarez",
-      role: "Founder, SolFuego Kitchen (Austin, TX)",
-      type: "Business Client"
-    },
-    {
-      quote: "Unlike generic freelance sites where you race to the bottom for $15, clients on SonicReel actually value real music production and cinema craft. My $19 Pro plan paid for itself on day two.",
-      author: "Devon Brooks",
-      role: "Sync Producer & Beatmaker (Atlanta, GA)",
-      type: "Creator Pro Member"
-    },
-    {
-      quote: "Elena's $59 short-form editing class + one 60-minute coaching call helped me land two $1,200/month local business video retainers within 3 weeks.",
-      author: "Jordan Pierce",
-      role: "Freelance Video Editor & Student",
-      type: "Academy Graduate"
-    }
-  ]
+  testimonials: []
 };

@@ -45,7 +45,7 @@ window.SITE_CONFIG = {
   // 4. PLATFORM COMMISSION, CREATOR PRO & STUDIO PASS PRICING
   pricing: {
     marketplaceFeePercent: 10,  // Standard platform fee on Free Starter creator bookings
-    creatorProMonthly: 19,      // Founding monthly rate (anchored against $29 retail)
+    creatorProMonthly: 19,      // Founding monthly rate (founding price)
     creatorProAnnualMonthly: 15,// Effective monthly rate when billed annually ($180/yr)
     studioAgencyMonthly: 49,    // Production Agency plan (team roster + homepage spotlight)
     allAccessPassYearly: 199    // Unlocks all Studio Academy on-demand classes + monthly review
@@ -60,9 +60,6 @@ window.SITE_CONFIG = {
 
   // 6. SOCIAL LINKS (Rendered automatically in the footer)
   social: {
-    instagram: "https://instagram.com",
-    youtube: "https://youtube.com",
-    tiktok: "https://tiktok.com",
-    linkedin: "https://linkedin.com"
+    // Add real profile URLs here, e.g. instagram: "https://instagram.com/yourhandle"
   }
 };

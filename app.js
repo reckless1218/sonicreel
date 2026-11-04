@@ -362,8 +362,8 @@
     if (proSubEl) {
       proSubEl.textContent =
         state.proBilling === "annual"
-          ? "Billed $" + annualMo * 12 + "/yr (2 months free) • Pays for itself on 1 gig"
-          : "Founding monthly rate • Pays for itself on one $190 gig";
+          ? "Billed $" + annualMo * 12 + "/yr"
+          : "Founding monthly rate • $19/mo founding price";
     }
     if (agencyPriceEl) {
       agencyPriceEl.textContent =
@@ -417,7 +417,7 @@
 
     const brandName = CFG.brandName || "SonicReel";
     const sp = (DATA.sponsors && DATA.sponsors.leaderboard) || {
-      id: "aurasound",
+      id: "house-ad",
       sponsorName: "Studio Partner",
       headline: "Reach 10,000+ Music Producers, Filmmakers & Growing Brands",
       subtext: "Book a featured partner banner on " + brandName + " starting at $99/week.",
@@ -449,7 +449,7 @@
       escapeHtml(sp.subtext) +
       "</p>" +
       "    </div>" +
-      '    <button type="button" class="btn btn-secondary btn-sm" data-action="partner-offer" data-sponsor-key="leaderboard">' +
+      '    <button type="button" class="btn btn-secondary btn-sm" data-action="open-advertise">' +
       escapeHtml(sp.ctaText) +
       " →</button>" +
       "  </div>" +
@@ -538,10 +538,8 @@
       "</p>" +
       "    </div>" +
       '    <div class="card-footer-row">' +
-      '      <span style="font-size:0.78rem;color:var(--text-muted);">Code: <strong>' +
-      escapeHtml(inf.promoCode || "PARTNER") +
-      "</strong></span>" +
-      '      <button type="button" class="btn btn-secondary btn-sm" data-action="partner-offer" data-sponsor-key="inFeed">' +
+      '      <span style="font-size:0.78rem;color:var(--text-muted);">Ad slot available</span>' +
+      '      <button type="button" class="btn btn-secondary btn-sm" data-action="open-advertise">' +
       escapeHtml(inf.ctaText) +
       "</button>" +
       "    </div>" +
@@ -562,16 +560,16 @@
       countEl.textContent =
         "Showing " +
         filtered.length +
-        " verified " +
+        " featured example " +
         (filtered.length === 1 ? "creator" : "creators") +
-        " • $0 buyer fee";
+        "";
     }
 
     if (filtered.length === 0) {
       grid.innerHTML =
         '<div class="empty-state-box">' +
         "  <h3>No creators match that exact search yet</h3>" +
-        '  <p style="color:var(--text-secondary);margin-bottom:18px;">Reset your filters to browse all 9 verified music producers, filmmakers, and editors—or post a custom brief for free.</p>' +
+        '  <p style="color:var(--text-secondary);margin-bottom:18px;">Reset your filters to browse all 9 featured example music producers, filmmakers, and editors—or post a custom brief for free.</p>' +
         '  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">' +
         '    <button type="button" class="btn btn-secondary btn-sm" data-action="reset-creator-filters">Reset All Filters</button>' +
         '    <button type="button" class="btn btn-primary btn-sm" data-action="open-post-brief">Post Custom Project Free</button>' +
@@ -645,9 +643,6 @@
           '    <div class="creator-header-row">' +
           '      <h3 class="creator-name">' +
           escapeHtml(c.name) +
-          (c.verified
-            ? '<span class="verified-check" title="Identity & Portfolio Verified">✓</span>'
-            : "") +
           "</h3>" +
           "    </div>" +
           '    <p class="creator-role">' +
@@ -782,7 +777,7 @@
           escapeHtml(b.description) +
           "</p>" +
           '    <span class="brief-verified">' +
-          escapeHtml(b.clientType || (b.isCustom ? "Posted by You • Open Brief" : "✓ Verified Payment")) +
+          escapeHtml(b.clientType || (b.isCustom ? "Posted by You • Open Brief" : "Example brief")) +
           "</span>" +
           "  </div>" +
           '  <div class="brief-meta-row">' +
@@ -1254,7 +1249,7 @@
     }
   }
 
-  // 2. Hire / Request Creator Quote Modal (Dynamic Math + Bundle Upsell + $0 Buyer Fee)
+  // 2. Hire / Request Creator Quote Modal (Dynamic Math + Bundle Upsell)
   function openHireCreatorModal(creatorId) {
     const c = DATA.creators.find((x) => x.id === creatorId) || DATA.creators[0];
     if (!c) return;
@@ -1266,11 +1261,11 @@
     const brandName = CFG.brandName || "SonicReel";
     const isVideoPro = c.category === "video" || c.category === "editing";
     const bundleLabel = isVideoPro
-      ? "🎵 Pair a vetted " + brandName + " composer for custom cleared ad music (+$150 bundle)"
+      ? "🎵 Pair a vetted " + brandName + " composer for custom ad music (+$150 bundle)"
       : "🎥 Pair a vetted " + brandName + " video editor for a matching 9:16 + 16:9 ad cut (+$165 bundle)";
 
     openModal(
-      '<span class="eyebrow-pill" style="margin-bottom:10px;">$0 Buyer Fee • Escrow Protected • Commercial Rights</span>' +
+      '<span class="eyebrow-pill" style="margin-bottom:10px;">Stripe Payments, Launching Soon • License Set Per Booking</span>' +
         '<h2 style="font-family:var(--font-display);margin:0 0 6px;">Hire or Message ' +
         escapeHtml(c.name) +
         "</h2>" +
@@ -1281,7 +1276,7 @@
         "</strong> (" +
         escapeHtml(c.turnaround) +
         ")</p>" +
-        '<div class="deliverables-mini">✓ $0 buyer marketplace fee • Funds stay safely in escrow until you approve final files • ' +
+        '<div class="deliverables-mini">✓ Stripe payments, launching soon • License terms set per booking; creator warrants originality • ' +
         escapeHtml((c.deliverables || []).join(" • ")) +
         "</div>" +
         '<form id="modal-hire-form" class="form-grid">' +
@@ -1388,7 +1383,7 @@
     openModal(
       '<span class="eyebrow-pill" style="margin-bottom:10px;">$0 to Post • Get 3 Custom Quotes in 24h</span>' +
         '<h2 style="font-family:var(--font-display);margin:0 0 6px;">Post What You Need Created</h2>' +
-        '<p style="margin:0;color:var(--text-secondary);font-size:0.9rem;">Describe your music, video, or bundle project once and let verified pros pitch tailored samples &amp; flat-rate quotes.</p>' +
+        '<p style="margin:0;color:var(--text-secondary);font-size:0.9rem;">Describe your music, video, or bundle project once and let featured pros pitch tailored samples &amp; flat-rate quotes.</p>' +
         '<form id="modal-brief-form" class="form-grid">' +
         "  <div>" +
         '    <label class="field-label" for="brief-title">Project Headline *</label>' +
@@ -1487,7 +1482,7 @@
     if (!b) return;
 
     openModal(
-      '<span class="eyebrow-pill" style="margin-bottom:10px;">Creator Proposal • Escrow Protected</span>' +
+      '<span class="eyebrow-pill" style="margin-bottom:10px;">Creator Proposal</span>' +
         '<h2 style="font-family:var(--font-display);margin:0 0 6px;">Pitch on: ' +
         escapeHtml(b.title) +
         "</h2>" +
@@ -1591,7 +1586,7 @@
     openModal(
       '<span class="eyebrow-pill" style="margin-bottom:10px;">Creator &amp; Instructor Onboarding</span>' +
         '<h2 style="font-family:var(--font-display);margin:0 0 6px;">List Your Music, Video or Classes</h2>' +
-        '<p style="margin:0;color:var(--text-secondary);font-size:0.9rem;">Get booked by growing brands, pitch on verified briefs, and keep up to 100% of every gig &amp; workshop sale.</p>' +
+        '<p style="margin:0;color:var(--text-secondary);font-size:0.9rem;">Get booked by growing brands, pitch on open briefs, and keep up to 100% of every gig &amp; workshop sale.</p>' +
         '<form id="modal-creator-join-form" class="form-grid">' +
         '  <div class="form-row-2">' +
         "    <div>" +
@@ -1791,7 +1786,7 @@
         '<div class="deliverables-mini" style="border-color:rgba(52,211,153,0.3);">' +
         "  <div>✓ Instant access to all 5 courses + every new workshop released this year</div>" +
         "  <div>✓ Download all LUT packs, 200+ drum/808 samples, multi-track stems &amp; pitch decks</div>" +
-        "  <div>✓ Monthly live group Q&amp;A + 30-day unconditional money-back guarantee</div>" +
+        "  <div>✓ Monthly live group Q&amp;A + 30-day money-back guarantee on on-demand classes</div>" +
         "</div>" +
         '<form id="modal-pass-form" class="form-grid">' +
         '  <div class="form-row-2">' +
