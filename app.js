@@ -296,7 +296,7 @@
       el.textContent = String(CFG.foundedYear || 2026);
     });
     document.querySelectorAll("[data-contact-email]").forEach((el) => {
-      const email = CFG.contactEmail || "hello@sonicreel.studio";
+      const email = CFG.contactEmail || "recklesslifeatl41@gmail.com";
       el.textContent = email;
       if (el.tagName === "A") {
         el.setAttribute("href", "mailto:" + email);

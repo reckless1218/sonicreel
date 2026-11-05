@@ -11,7 +11,7 @@ window.SITE_CONFIG = {
   brandName: "SonicReel",
   brandTagline: "Studio-Grade Custom Music, Commercial Video & Live Pro Classes",
   domainUrl: "https://reckless1218.github.io/sonicreel",
-  contactEmail: "hello@sonicreel.studio",
+  contactEmail: "recklesslifeatl41@gmail.com",
   supportCity: "Austin, TX • Remote Worldwide",
   foundedYear: 2026,
 
