@@ -1703,6 +1703,22 @@ textarea.field-input {
   margin: 14px 0;
 }
 
+
+.reel-canvas-wrap video {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 68vh;
+  object-fit: contain;
+  background: #05060a;
+}
+
+.real-video-wrap {
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .reel-canvas-wrap canvas {
   width: 100%;
   height: auto;

@@ -466,7 +466,8 @@
     const q = state.creatorSearch.trim().toLowerCase();
     const list = DATA.creators.filter((c) => {
       if (state.creatorCategory !== "all" && c.category !== state.creatorCategory) {
-        return false;
+        const multiCategory = Array.isArray(c.categories) && c.categories.includes(state.creatorCategory);
+        if (!multiCategory) return false;
       }
       if (
         state.creatorUseCase !== "all" &&
@@ -563,16 +564,18 @@
       countEl.textContent =
         "Showing " +
         filtered.length +
-        " featured example " +
-        (filtered.length === 1 ? "creator" : "creators") +
-        "";
+        " creators (" +
+        filtered.filter((c) => !c.isRealCreator).length +
+        " example " +
+        (filtered.filter((c) => !c.isRealCreator).length === 1 ? "profile" : "profiles") +
+        ")";
     }
 
     if (filtered.length === 0) {
       grid.innerHTML =
         '<div class="empty-state-box">' +
         "  <h3>No creators match that exact search yet</h3>" +
-        '  <p style="color:var(--text-secondary);margin-bottom:18px;">Reset your filters to browse all 9 featured example music producers, filmmakers, and editors—or post a custom brief for free.</p>' +
+        '  <p style="color:var(--text-secondary);margin-bottom:18px;">Reset your filters to browse Dustin’s real AI-video work and the example music, filmmaking, and editing profiles—or post a custom brief for free.</p>' +
         '  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">' +
         '    <button type="button" class="btn btn-secondary btn-sm" data-action="reset-creator-filters">Reset All Filters</button>' +
         '    <button type="button" class="btn btn-primary btn-sm" data-action="open-post-brief">Post Custom Project Free</button>' +
@@ -599,8 +602,8 @@
         c.mediaType === "audio"
           ? isThisAudioPlaying
             ? "Playing in Studio Dock • Click to pause"
-            : "Interactive Studio Synth Preview • " + escapeHtml(c.sampleDuration)
-          : "Watch 4K Showreel + Audio • " + escapeHtml(c.sampleDuration);
+            : (c.sampleUrl ? "Original Audio Sample • " : "Interactive Studio Synth Preview • ") + escapeHtml(c.sampleDuration)
+          : (c.videoUrl ? "Watch Original AI-assisted Brand Spot • " : "Watch 4K Studio Showreel Preview • ") + escapeHtml(c.sampleDuration);
 
       cardsHtml.push(
         '<article class="creator-card ' +
@@ -628,6 +631,8 @@
           escapeHtml(c.id) +
           '" data-duration="' +
           escapeHtml(c.sampleDuration) +
+          '" data-sample-label="' +
+          (c.sampleUrl ? "Original Audio Sample" : "Interactive Studio Synth Preview") +
           '">' +
           '      <span class="play-circle" aria-hidden="true">' +
           playIcon +
@@ -731,7 +736,7 @@
         if (subEl) {
           subEl.textContent = active
             ? "Playing in Studio Dock • Click to pause"
-            : "Interactive Studio Synth Preview • " + dur;
+            : btn.getAttribute("data-sample-label") + " • " + dur;
         }
       });
   }
@@ -1100,6 +1105,7 @@
     if (window.cinemaReel) {
       window.cinemaReel.stop();
     }
+    stopModalVideo();
 
     // Preserve original page focus target even across modal-to-modal transitions
     if (!backdrop.classList.contains("open")) {
@@ -1127,6 +1133,7 @@
     if (window.cinemaReel) {
       window.cinemaReel.stop();
     }
+    stopModalVideo();
     if (backdrop) {
       backdrop.classList.remove("open");
       backdrop.setAttribute("aria-hidden", "true");
@@ -1142,6 +1149,50 @@
     ) {
       state.lastFocusedEl.focus();
     }
+  }
+
+  function stopModalVideo() {
+    const video = document.getElementById("creator-real-video");
+    if (video) video.pause();
+  }
+
+  function openCreatorVideoModal(c) {
+    if (!c || !c.videoUrl) return false;
+    if (window.studioAudio && window.studioAudio.getState().isPlaying) {
+      window.studioAudio.pause();
+    }
+
+    openModal(
+      '<div style="padding-right:36px;">' +
+        '  <span class="eyebrow-pill" style="margin-bottom:8px;">Original AI-assisted Brand Spot</span>' +
+        '  <h2 style="font-family:var(--font-display);margin:0 0 4px;">' + escapeHtml(c.sampleTitle) + "</h2>" +
+        '  <p style="margin:0;color:var(--text-secondary);font-size:0.9rem;">' +
+        escapeHtml(c.name + " • " + c.role) + "</p></div>" +
+        '<div class="reel-canvas-wrap real-video-wrap">' +
+        '  <video id="creator-real-video" controls playsinline preload="metadata" width="720" height="1280" ' +
+        'poster="' + escapeHtml(c.videoPoster || "") + '">' +
+        '    <source src="' + escapeHtml(c.videoUrl) + '" type="video/mp4">' +
+        "    Your browser does not support embedded video." +
+        "  </video></div>" +
+        '<div class="reel-controls-bar"><span style="color:var(--text-secondary);font-size:0.85rem;">Real 11-second H.264/AAC portfolio sample with sound.</span>' +
+        '  <button type="button" class="btn btn-primary btn-sm" data-action="open-hire-creator" data-creator-id="' +
+        escapeHtml(c.id) + '">Hire ' + escapeHtml(c.name.split(" ")[0]) + "</button></div>",
+      true,
+      "#creator-real-video"
+    );
+
+    const video = document.getElementById("creator-real-video");
+    if (video) {
+      video.addEventListener("play", () => {
+        if (window.studioAudio && window.studioAudio.getState().isPlaying) {
+          window.studioAudio.pause();
+        }
+      });
+      video.addEventListener("error", () => {
+        showToast("This video could not be loaded. Please try again.");
+      });
+    }
+    return true;
   }
 
   // 1. Cinema Video Showreel Lightbox Modal (with Synced Audio Toggle!)
@@ -1262,7 +1313,7 @@
     const tier3 = Math.round((c.startingPrice * 2.6) / 10) * 10;
 
     const brandName = CFG.brandName || "SonicReel";
-    const isVideoPro = c.category === "video" || c.category === "editing";
+    const isVideoPro = c.category === "video" || c.category === "editing" || c.mediaType === "video";
     const bundleLabel = isVideoPro
       ? "🎵 Pair a vetted " + brandName + " composer for custom ad music (+$150 bundle)"
       : "🎥 Pair a vetted " + brandName + " video editor for a matching 9:16 + 16:9 ad cut (+$165 bundle)";
@@ -2015,7 +2066,9 @@
       } else if (action === "watch-creator-reel") {
         const id = btn.getAttribute("data-creator-id");
         const c = DATA.creators.find((x) => x.id === id);
-        if (c) {
+        if (c && c.videoUrl) {
+          openCreatorVideoModal(c);
+        } else if (c) {
           openReelModal(
             c.sampleTitle,
             c.name + " • " + c.role + " • Packages from $" + c.startingPrice,

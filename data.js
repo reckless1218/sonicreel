@@ -2,12 +2,34 @@
  * ============================================================================
  * SONICREEL — MARKETPLACE CATALOG DATA (data.js)
  * ============================================================================
- * 9 example creators (100% unique matched portraits), 6 studio classes &
+ * Dustin Hammond AI-video listing + 9 example creators, 6 studio classes &
  * coaching offers, open client briefs, testimonials, and sponsor campaigns.
  * ============================================================================
  */
 window.SONICREEL_DATA = {
   creators: [
+    {
+      id: "dustin-hammond-ai-video",
+      name: "Dustin Hammond",
+      role: "AI Video Creator & Creative Technologist",
+      category: "video",
+      useCases: ["business", "youtube"],
+      location: "Atlanta, GA",
+      featured: true,
+      startingPrice: 200,
+      turnaround: "3–5 days",
+      avatar: "assets/images/creator-dustin-hammond-ai-video.jpg",
+      badge: "Real AI-assisted Work",
+      bio: "Atlanta-based creative technologist pairing AI-assisted visual production with original music, voice, and editing. This real Reckless Nights brand spot moves from a character-led bar scene to a product and offer reveal.",
+      deliverables: ["Web-ready MP4 + Project-Agreed Cutdowns", "Music & Voice Mix", "Usage Terms Agreed Per Project"],
+      mediaType: "video",
+      sampleTitle: "Last Call — Reckless Nights AI-assisted Brand Spot",
+      sampleDuration: "0:11",
+      videoUrl: "assets/video/dustin-reckless-nights-last-call.mp4",
+      videoPoster: "assets/images/dustin-reckless-nights-last-call-poster.jpg",
+      isRealCreator: true,
+      tags: ["AI-assisted Video", "Brand Storytelling", "Vertical Social Ads", "Music & Voice"]
+    },
     {
       id: "amara-sterling",
       name: "Amara Sterling",
